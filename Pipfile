@@ -12,6 +12,8 @@ flask-wtf = "*"
 flask-login = "*"
 flask-sqlalchemy = "*"
 werkzeug = "*"
+psycopg2 = "*"
+wtforms = "*"
 
 [dev-packages]
 
