@@ -7,6 +7,7 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 
 from .models import db, User
 from .config import Config
+from .seeds import seed_commands
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 
@@ -15,9 +16,13 @@ app = Flask(__name__)
 login = LoginManager(app)
 login.login_view = 'auth.unauthorized'
 
+
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
+    
+
+app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
 
